@@ -3,7 +3,25 @@ local Util = require("marshmallow.util")
 return {
     {
         "folke/which-key.nvim",
-        opts = true
+        config = function()
+          require("which-key").setup({
+              spelling = {
+                  enabled = false
+              }
+          })
+
+          require("which-key").register({
+              f = {
+                  name = "Find"
+              },
+              g = {
+                  name = "Git"
+              },
+              s = {
+                  name = "Search"
+              },
+          }, { prefix = "<leader>" })
+        end,
     },
     {
         "Eandrju/cellular-automaton.nvim",
@@ -28,14 +46,14 @@ return {
             {
                 "<leader>fe",
                 function()
-	                require("neo-tree.command").execute({ toggle = true, dir = Util.get_root() })
+                  require("neo-tree.command").execute({ toggle = true, dir = Util.get_root() })
                 end,
                 desc = "Explorer NeoTree (root dir)",
             },
             {
                 "<leader>fE",
                 function()
-	                require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+                  require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
                 end,
                 desc = "Explorer NeoTree (cwd)",
             },
@@ -44,16 +62,16 @@ return {
         },
     },
     deactivate = function()
-	    vim.cmd([[Neotree close]])
+      vim.cmd([[Neotree close]])
     end,
     init = function()
-	    vim.g.neo_tree_remove_legacy_commands = 1
-	    if vim.fn.argc() == 1 then
-		    local stat = vim.loop.fs_stat(vim.fn.argv(0))
-		    if stat and stat.type == "directory" then
-			    require("neo-tree")
-		    end
-	    end
+      vim.g.neo_tree_remove_legacy_commands = 1
+      if vim.fn.argc() == 1 then
+        local stat = vim.loop.fs_stat(vim.fn.argv(0))
+        if stat and stat.type == "directory" then
+          require("neo-tree")
+        end
+      end
     end,
     opts = {
         filesystem = {
@@ -86,34 +104,33 @@ return {
             "nvim-telescope/telescope-symbols.nvim"
         },
         keys = {
-            { "<leader><space>", "<cmd>Telescope buffers show_all_buffers=true<cr>",       desc = "Switch Buffer" },
-            { "<leader>/",       Util.telescope("live_grep"),                              desc = "Find in Files (Grep)" },
-            { "<leader>:",       "<cmd>Telescope command_history<cr>",                     desc = "Command History" },
+            { "<leader><space>", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+            { "<leader>/",       Util.telescope("live_grep"),                        desc = "Find in Files (Grep)" },
+            { "<leader>:",       "<cmd>Telescope command_history<cr>",               desc = "Command History" },
             -- find
-            { "<leader>ff",      Util.telescope("files"),                                  desc = "Find Files (root dir)" },
-            { "<leader>fF",      Util.telescope("files", { cwd = false }),                 desc = "Find Files (cwd)" },
-            { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                            desc = "Recent" },
+            { "<leader>ff",      Util.telescope("files"),                            desc = "Find Files (root dir)" },
+            { "<leader>fF",      Util.telescope("files", { cwd = false }),           desc = "Find Files (cwd)" },
+            { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                      desc = "Recent" },
             -- git
-            { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                         desc = "commits" },
-            { "<leader>gs",      "<cmd>Telescope git_status<CR>",                          desc = "status" },
+            { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                   desc = "commits" },
+            { "<leader>gs",      "<cmd>Telescope git_status<CR>",                    desc = "status" },
             -- search
-            { "<leader>sa",      "<cmd>Telescope autocommands<cr>",                        desc = "Auto Commands" },
-            { "<leader>sb",      "<cmd>Telescope current_buffer_fuzzy_find<cr>",           desc = "Buffer" },
-            { "<leader>sC",      "<cmd>Telescope commands<cr>",                            desc = "Commands" },
-            { "<leader>sd",      "<cmd>Telescope diagnostics<cr>",                         desc = "Diagnostics" },
-            { "<leader>sg",      Util.telescope("live_grep"),                              desc = "Grep (root dir)" },
-            { "<leader>sG",      Util.telescope("live_grep", { cwd = false }),             desc = "Grep (cwd)" },
-            { "<leader>sh",      "<cmd>Telescope help_tags<cr>",                           desc = "Help Pages" },
-            { "<leader>sH",      "<cmd>Telescope highlights<cr>",                          desc = "Search Highlight Groups" },
-            { "<leader>sk",      "<cmd>Telescope keymaps<cr>",                             desc = "Key Maps" },
-            { "<leader>sM",      "<cmd>Telescope man_pages<cr>",                           desc = "Man Pages" },
-            { "<leader>sm",      "<cmd>Telescope marks<cr>",                               desc = "Jump to Mark" },
-            { "<leader>so",      "<cmd>Telescope vim_options<cr>",                         desc = "Options" },
-            { "<leader>sR",      "<cmd>Telescope resume<cr>",                              desc = "Resume" },
-            { "<leader>sl",      "<cmd>Telescope symbols<cr>",                             desc = "Symbols" },
-            { "<leader>sw",      Util.telescope("grep_string"),                            desc = "Word (root dir)" },
-            { "<leader>sW",      Util.telescope("grep_string", { cwd = false }),           desc = "Word (cwd)" },
-            { "<leader>uC",      Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+            { "<leader>sa",      "<cmd>Telescope autocommands<cr>",                  desc = "Auto Commands" },
+            { "<leader>sb",      "<cmd>Telescope current_buffer_fuzzy_find<cr>",     desc = "Buffer" },
+            { "<leader>sC",      "<cmd>Telescope commands<cr>",                      desc = "Commands" },
+            { "<leader>sd",      "<cmd>Telescope diagnostics<cr>",                   desc = "Diagnostics" },
+            { "<leader>sg",      Util.telescope("live_grep"),                        desc = "Grep (root dir)" },
+            { "<leader>sG",      Util.telescope("live_grep", { cwd = false }),       desc = "Grep (cwd)" },
+            { "<leader>sh",      "<cmd>Telescope help_tags<cr>",                     desc = "Help Pages" },
+            { "<leader>sH",      "<cmd>Telescope highlights<cr>",                    desc = "Search Highlight Groups" },
+            { "<leader>sk",      "<cmd>Telescope keymaps<cr>",                       desc = "Key Maps" },
+            { "<leader>sM",      "<cmd>Telescope man_pages<cr>",                     desc = "Man Pages" },
+            { "<leader>sm",      "<cmd>Telescope marks<cr>",                         desc = "Jump to Mark" },
+            { "<leader>so",      "<cmd>Telescope vim_options<cr>",                   desc = "Options" },
+            { "<leader>sR",      "<cmd>Telescope resume<cr>",                        desc = "Resume" },
+            { "<leader>sl",      "<cmd>Telescope symbols<cr>",                       desc = "Symbols" },
+            { "<leader>sw",      Util.telescope("grep_string"),                      desc = "Word (root dir)" },
+            { "<leader>sW",      Util.telescope("grep_string", { cwd = false }),     desc = "Word (cwd)" },
             {
                 "<leader>ss",
                 Util.telescope("lsp_document_symbols", {
@@ -153,9 +170,9 @@ return {
 
         },
         config = function()
-	        require('telescope').setup({})
+          require('telescope').setup({})
 
-	        pcall(require('telescope').load_extension, 'fzf')
+          pcall(require('telescope').load_extension, 'fzf')
         end
     },
     -- {
