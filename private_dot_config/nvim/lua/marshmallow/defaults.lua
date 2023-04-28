@@ -19,8 +19,6 @@ vim.o.softtabstop = 2
 -- number of spaces a tab character appears as
 vim.o.tabstop = 2
 
-vim.o.cmdheight = 0
-
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
