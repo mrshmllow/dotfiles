@@ -22,3 +22,4 @@ require("lazy").setup("marshmallow.plugins", {
 
 require("marshmallow.remap")
 require("marshmallow.defaults")
+require("marshmallow.neovide")
