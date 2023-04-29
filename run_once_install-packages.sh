@@ -1,3 +1,3 @@
 #!/bin/sh
 
-sudo pacman -S fisher
+sudo pacman -S fisher sccache
