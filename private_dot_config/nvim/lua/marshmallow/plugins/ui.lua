@@ -214,5 +214,11 @@ return {
 		"windwp/nvim-ts-autotag",
 		opts = true,
 	},
+  {
+    "voldikss/vim-floaterm",
+    cmd = "FloatermNew",
+    keys = {
+      {"<leader>l", "<cmd>:FloatermNew --cwd=<root> --name=Lazygit --width=1.0 --height=1.0  lazygit<CR>", desc = "Open Lazygit"}
     }
+  }
 }
