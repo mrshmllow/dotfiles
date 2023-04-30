@@ -6,10 +6,15 @@ return {
 		term_colors = true,
 		intergration = {
 			neotree = true,
-      gitsigns = true,
-      treesitter_context = true,
-      treesitter = true,
+			gitsigns = true,
+			treesitter_context = true,
+			treesitter = true,
 		},
+		custom_highlights = function(colors)
+			return {
+				StatusLine = { bg = colors.base },
+			}
+		end,
 	},
 	config = function(_, opts)
 		require("catppuccin").setup(opts)
