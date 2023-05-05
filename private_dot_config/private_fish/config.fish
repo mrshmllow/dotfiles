@@ -16,3 +16,5 @@ end
 
 set -gx PNPM_HOME "/home/marsh/.local/share/pnpm"
 set -gx PATH "$PNPM_HOME" $PATH
+
+set -gx MANPAGER "nvim +Man!"
