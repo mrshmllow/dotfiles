@@ -1,3 +1,5 @@
+set fish_greeting
+
 set ABBR_TIPS_PROMPT "\e[1m{{ .abbr }}\e[0m => {{ .cmd }}"
 set --universal nvm_default_packages pnpm
 set --universal nvm_default_version latest
