@@ -7,6 +7,7 @@ fish_add_path /home/marsh/.rvm/bin
 fish_add_path /home/marsh/.local/share/gem/ruby/3.0.0/bin
 
 alias ssh="kitty +kitten ssh"
+alias cat="bat"
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
