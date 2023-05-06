@@ -1,0 +1,159 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, JetBrainsMonoNL Nerd Font, Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+window#waybar {
+    background-color: #1e1e2e;
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+    color: rgb(205, 214, 244);
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+}
+
+#workspaces button {
+    padding: 0 13px 0 10px;
+    background-color: transparent;
+    border-radius: 15px;
+    color: #bac2de;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#workspaces button.active {
+    color: #cba6f7;
+    /* box-shadow: inset 0 -3px #ffffff; */
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+/* Surface0 */
+#idle_inhibitor, #network, #wireplumber, #backlight, #battery, #workspaces button.active, #bluetooth {
+    background-color: #313244;
+}
+
+/* Generic Rounded */
+#idle_inhibitor, #network, #backlight, #wireplumber, #battery, #bluetooth {
+    padding: 0 12px 0 10px;
+    border-radius: 15px;
+}
+
+#memory, #cpu, #temperature {
+  color: #6c7086;
+}
+
+#cpu {
+    border-radius: 15px 0 0 15px;
+    padding: 0 5px 0 10px;
+}
+
+#cpu {
+    border-radius: 15px 0 0 15px;
+    padding: 0 5px 0 10px;
+}
+
+#memory {
+    padding: 0 5px 0 0;
+}
+
+#temperature {
+    border-radius: 0 15px 0 0;
+    padding: 0 10px 0 0;
+}
+
+#temperature.critical {
+    color: #f38ba8;
+}
+
+#clock,
+#tray,
+#mode,
+#scratchpad {
+    padding: 0 0;
+    color: inherit;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#battery.plugged {
+    color: #1e1e2e;
+    background-color: #a6e3a1;
+}
+
+#battery.charging {
+    color: #a6e3a1;
+}
+
+#battery.critical:not(.charging) {
+    color: #1e1e2e;
+    background-color: #f38ba8;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#wireplumber.muted {
+    padding: 0 15px 0 10px;
+    color: #f38ba8;
+}
+
+#network.disconnected {
+    background-color: #f53c3c;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor.activated {
+    color: #cba6f7;
+}
