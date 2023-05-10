@@ -8,7 +8,7 @@
     // Choose the order of the modules
     "modules-left": ["wlr/workspaces", "tray", "cpu", "memory", "temperature"],
     "modules-center": ["clock"],
-    "modules-right": ["bluetooth", "network", "idle_inhibitor", "backlight", "wireplumber", "battery"],
+    "modules-right": ["bluetooth", "network", "idle_inhibitor", "backlight", "wireplumber", "pulseaudio", "battery"],
     // Modules configuration
     "wlr/workspaces": {
         "disable-scroll": true,
@@ -111,8 +111,10 @@
     },
     "bluetooth": {
       "format": "󰂯 {status}",
-      "format-disabled": "󰂲 ", // an empty format will hide the module
-      "format-connected": "󰂯 {num_connections} connected",
+      "format-on": "󰂯",
+      "format-off": "󰂲",
+      "format-disabled": "󰂲",
+      "format-connected": "󰂱 {num_connections}",
       "tooltip-format": "{controller_alias}\t{controller_address}",
       "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
       "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -133,9 +135,9 @@
         "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "network": {
-        "format-wifi": "{essid} 󰤨",
+        "format-wifi": "󰤨",
         "format-ethernet": "{ipaddr}/{cidr} 󰈀",
-        "tooltip-format": "{ifname} via {gwaddr} 󰇖 ({signalStrength}% 󰤨 )",
+        "tooltip-format": "{ifname} via {gwaddr} 󰇖 ({essid} {signalStrength}% 󰤨 )",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected 󰤫",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
@@ -143,11 +145,26 @@
     "wireplumber": {
       "format": "{icon}",
       "tooltip": true,
-      "tooltip-format": "{volume}%",
+      "tooltip-format": "{node_name} {volume}%",
       "format-muted": "",
       "on-click": "pamixer --toggle-mute",
       "on-click-right": "pavucontrol",
       "on-click-middle": "helvum",
       "format-icons": ["", "", ""]
+    },
+    "pulseaudio": {
+      "format": "{volume}% {icon}",
+      "format-bluetooth": "{volume}% {icon} ",
+      "format-muted": "",
+      "format-icons": {
+          "headphone": "󰋋",
+          "hands-free": "󰋎",
+          "headset": "󱡏",
+          "default": ["", ""]
+      },
+      "scroll-step": 5,
+      "on-click": "pamixer --toggle-mute",
+      "onright--click": "pavucontrol",
+      "ignored-sinks": ["Easy Effects Sink"]
     }
 }

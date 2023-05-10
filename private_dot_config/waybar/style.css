@@ -39,6 +39,7 @@ button:hover {
 
 #workspaces button {
     padding: 0 13px 0 10px;
+    margin-left: 2px;
     background-color: transparent;
     border-radius: 15px;
     color: #bac2de;
@@ -58,14 +59,28 @@ button:hover {
 }
 
 /* Surface0 */
-#idle_inhibitor, #network, #wireplumber, #backlight, #battery, #workspaces button.active, #bluetooth {
+#idle_inhibitor, #network, #wireplumber, #pulseaudio, #backlight, #battery, #workspaces button.active, #bluetooth {
     background-color: #313244;
 }
 
 /* Generic Rounded */
-#idle_inhibitor, #network, #backlight, #wireplumber, #battery, #bluetooth {
+#idle_inhibitor, #network, #backlight, #wireplumber, #pulseaudio, #battery, #bluetooth {
     padding: 0 12px 0 10px;
     border-radius: 15px;
+}
+
+/* Spacing Right */
+#bluetooth, #network, #idle_inhibitor, #backlight, #wireplumber, #pulseaudio {
+  margin-right: 5px;
+}
+
+/* Spacing Left */
+#tray, #cpu {
+  margin-left: 5px;
+}
+
+#network {
+    padding: 0 15px 0 10px;
 }
 
 #memory, #cpu, #temperature {
@@ -145,6 +160,10 @@ label:focus {
     background-color: #f53c3c;
 }
 
+#network.bluetooth {
+    background-color: #f53c3c;
+}
+
 #tray > .passive {
     -gtk-icon-effect: dim;
 }
@@ -155,5 +174,6 @@ label:focus {
 }
 
 #idle_inhibitor.activated {
-    color: #cba6f7;
+    background-color: #cdd6f4;
+    color: #1e1e2e;
 }
