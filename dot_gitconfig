@@ -1,0 +1,12 @@
+[user]
+	email = marshycity@gmail.com
+	name = marshmallow
+	signingkey = CE4CECD4861112D38ED3393A767B8880F5AAEB9C
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[commit]
+	gpgsign = true
