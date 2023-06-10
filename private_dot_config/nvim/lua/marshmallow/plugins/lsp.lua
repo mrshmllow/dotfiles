@@ -32,7 +32,7 @@ return {
           "tailwindcss",
           "pyright",
           "clangd",
-          "cssls",
+          "cssls"
         },
       })
 

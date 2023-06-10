@@ -798,47 +798,47 @@ return {
     "tpope/vim-dadbod",
     lazy = false,
   },
-  {
-    "echasnovski/mini.starter",
-    version = false,
-    opts = {},
-    config = function()
-      local starter = require("mini.starter")
+  -- {
+  --   "echasnovski/mini.starter",
+  --   version = false,
+  --   opts = {},
+  --   config = function()
+  --     local starter = require("mini.starter")
 
-      local function footer()
-        local timer = vim.loop.new_timer()
+  --     local function footer()
+  --       local timer = vim.loop.new_timer()
 
-        timer:start(
-          0,
-          1000,
-          vim.schedule_wrap(function()
-            if vim.api.nvim_buf_get_option(0, "filetype") == "starter" then
-              starter.refresh()
-              timer:close()
-            end
-          end)
-        )
+  --       timer:start(
+  --         0,
+  --         1000,
+  --         vim.schedule_wrap(function()
+  --           if vim.api.nvim_buf_get_option(0, "filetype") == "starter" then
+  --             starter.refresh()
+  --             timer:close()
+  --           end
+  --         end)
+  --       )
 
-        return function()
-          local stats = require("lazy").stats()
+  --       return function()
+  --         local stats = require("lazy").stats()
 
-          return "Loaded in ~" .. math.floor(stats.startuptime + 0.5)
-        end
-      end
+  --         return "Loaded in ~" .. math.floor(stats.startuptime + 0.5)
+  --       end
+  --     end
 
-      require("mini.starter").setup({
-        header = function()
-          return table.concat({}, "\n")
-        end,
-        footer = footer(),
-        items = {
-          starter.sections.recent_files(5, true, false),
-          starter.sections.sessions(),
-        },
-        evaluate_single = true,
-      })
-    end,
-  },
+  --     require("mini.starter").setup({
+  --       header = function()
+  --         return table.concat({}, "\n")
+  --       end,
+  --       footer = footer(),
+  --       items = {
+  --         starter.sections.recent_files(5, true, false),
+  --         starter.sections.sessions(),
+  --       },
+  --       evaluate_single = true,
+  --     })
+  --   end,
+  -- },
   {
     "echasnovski/mini.sessions",
     version = false,

@@ -36,4 +36,4 @@ vim.o.laststatus = 3
 
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,terminal,options"
 
-vim.cmd("cabbrev help tab help")
+-- vim.cmd("cabbrev help tab help")
